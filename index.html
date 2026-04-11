@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UniPlanner – Controle Acadêmico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="app-wrapper">
+
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <span class="brand-icon">◈</span>
+        <span class="brand-name">UniPlanner</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-btn active" data-page="disciplinas">
+          <span class="nav-icon">◰</span>
+          <span>Disciplinas</span>
+        </button>
+        <button class="nav-btn" data-page="agenda">
+          <span class="nav-icon">◷</span>
+          <span>Agenda</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <p>Dados salvos localmente</p>
+      </div>
+    </aside>
+
+    
+    <main class="main-content">
+
+      <section id="page-disciplinas" class="page active">
+
+        <header class="page-header">
+          <div>
+            <h1 class="page-title">Disciplinas</h1>
+            <p class="page-subtitle">Acompanhe suas matérias e notas do semestre</p>
+          </div>
+          <button class="btn-primary" id="btn-abrir-modal-disciplina">+ Nova Disciplina</button>
+        </header>
+
+        <div id="lista-disciplinas" class="cards-grid"></div>
+
+        <div id="empty-disciplinas" class="empty-state" style="display:none;">
+          <span class="empty-icon">◈</span>
+          <p>Nenhuma disciplina cadastrada ainda.</p>
+          <small>Clique em "Nova Disciplina" para começar.</small>
+        </div>
+
+      </section>
+
+      <section id="page-detalhe" class="page">
+
+        <header class="page-header">
+          <div>
+            <button class="btn-back" id="btn-voltar">← Voltar</button>
+            <h1 class="page-title" id="detalhe-nome"></h1>
+            <p class="page-subtitle" id="detalhe-professor"></p>
+          </div>
+          <button class="btn-danger" id="btn-excluir-disciplina">Excluir Disciplina</button>
+        </header>
+
+        <div class="detalhe-layout">
+
+          <div class="media-card">
+            <div class="media-display">
+              <span class="media-label">Média Atual</span>
+              <span class="media-valor" id="detalhe-media">–</span>
+              <span class="media-status" id="detalhe-status"></span>
+            </div>
+            <div class="media-info" id="detalhe-falta"></div>
+          </div>
+
+          <div class="notas-section">
+            <div class="section-header-row">
+              <h2 class="section-title">Notas</h2>
+              <button class="btn-secondary" id="btn-abrir-modal-nota">+ Adicionar Nota</button>
+            </div>
+
+            <div class="notas-config">
+              <label for="media-minima-input">Média mínima para aprovação:</label>
+              <input type="number" id="media-minima-input" class="input-inline" min="0" max="10" step="0.1" value="6" />
+            </div>
+
+            <div id="lista-notas" class="notas-lista"></div>
+
+            <div id="empty-notas" class="empty-state small" style="display:none;">
+              <p>Nenhuma nota cadastrada.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <section id="page-agenda" class="page">
+
+        <header class="page-header">
+          <div>
+            <h1 class="page-title">Agenda Acadêmica</h1>
+            <p class="page-subtitle">Provas, trabalhos e entregas do semestre</p>
+          </div>
+          <button class="btn-primary" id="btn-abrir-modal-evento">+ Novo Evento</button>
+        </header>
+
+        <div class="filtros-agenda">
+          <button class="filtro-btn active" data-filtro="todos">Todos</button>
+          <button class="filtro-btn" data-filtro="prova">Provas</button>
+          <button class="filtro-btn" data-filtro="trabalho">Trabalhos</button>
+          <button class="filtro-btn" data-filtro="entrega">Entregas</button>
+          <button class="filtro-btn" data-filtro="outro">Outros</button>
+        </div>
+
+        <div id="lista-eventos" class="eventos-lista"></div>
+
+        <div id="empty-eventos" class="empty-state" style="display:none;">
+          <span class="empty-icon">◷</span>
+          <p>Nenhum evento cadastrado ainda.</p>
+          <small>Clique em "+ Novo Evento" para adicionar.</small>
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+
+  <div id="modal-disciplina" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-disc-titulo" style="display:none;">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2 id="modal-disc-titulo">Nova Disciplina</h2>
+        <button class="modal-close" data-fecha="modal-disciplina">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="disc-nome">Nome da Disciplina *</label>
+          <input type="text" id="disc-nome" class="input" placeholder="Ex: Cálculo I" required />
+        </div>
+        <div class="form-group">
+          <label for="disc-professor">Professor(a)</label>
+          <input type="text" id="disc-professor" class="input" placeholder="Ex: Prof. Silva" />
+        </div>
+        <div class="form-group">
+          <label for="disc-cor">Cor de identificação</label>
+          <div class="cor-picker" id="cor-picker">
+            <button class="cor-btn active" data-cor="#E76F51" style="background:#E76F51;"></button>
+            <button class="cor-btn" data-cor="#2A9D8F" style="background:#2A9D8F;"></button>
+            <button class="cor-btn" data-cor="#E9C46A" style="background:#E9C46A;"></button>
+            <button class="cor-btn" data-cor="#457B9D" style="background:#457B9D;"></button>
+            <button class="cor-btn" data-cor="#9B5DE5" style="background:#9B5DE5;"></button>
+            <button class="cor-btn" data-cor="#F77F00" style="background:#F77F00;"></button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-ghost" data-fecha="modal-disciplina">Cancelar</button>
+        <button class="btn-primary" id="btn-salvar-disciplina">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-nota" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-nota-titulo" style="display:none;">
+    <div class="modal-box modal-box--sm">
+      <div class="modal-header">
+        <h2 id="modal-nota-titulo">Adicionar Nota</h2>
+        <button class="modal-close" data-fecha="modal-nota">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="nota-descricao">Descrição *</label>
+          <input type="text" id="nota-descricao" class="input" placeholder="Ex: Prova 1, Trabalho Final..." required />
+        </div>
+        <div class="form-group">
+          <label for="nota-valor">Nota (0 a 10) *</label>
+          <input type="number" id="nota-valor" class="input" min="0" max="10" step="0.1" placeholder="Ex: 8.5" required />
+        </div>
+        <div class="form-group">
+          <label for="nota-peso">Peso</label>
+          <input type="number" id="nota-peso" class="input" min="0.1" step="0.1" placeholder="Ex: 1 (padrão)" value="1" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-ghost" data-fecha="modal-nota">Cancelar</button>
+        <button class="btn-primary" id="btn-salvar-nota">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-evento" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-evento-titulo" style="display:none;">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2 id="modal-evento-titulo">Novo Evento</h2>
+        <button class="modal-close" data-fecha="modal-evento">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="evento-titulo">Título *</label>
+          <input type="text" id="evento-titulo" class="input" placeholder="Ex: Prova de Cálculo I" required />
+        </div>
+        <div class="form-group">
+          <label for="evento-tipo">Tipo *</label>
+          <select id="evento-tipo" class="input">
+            <option value="prova">Prova</option>
+            <option value="trabalho">Trabalho</option>
+            <option value="entrega">Entrega</option>
+            <option value="outro">Outro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="evento-data">Data *</label>
+          <input type="date" id="evento-data" class="input" required />
+        </div>
+        <div class="form-group">
+          <label for="evento-disciplina">Disciplina (opcional)</label>
+          <select id="evento-disciplina" class="input">
+            <option value="">– Nenhuma –</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="evento-obs">Observações</label>
+          <textarea id="evento-obs" class="input" rows="2" placeholder="Detalhes, local, material necessário..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-ghost" data-fecha="modal-evento">Cancelar</button>
+        <button class="btn-primary" id="btn-salvar-evento">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/disciplinas.js"></script>
+  <script src="js/agenda.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
