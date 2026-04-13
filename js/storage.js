@@ -1,12 +1,12 @@
-
 const Storage = {
+
   getDisciplinas() {
     const dados = localStorage.getItem('uniplanner_disciplinas');
     return dados ? JSON.parse(dados) : [];
   },
 
-  saveDisciplinas(disciplinas) {
-    localStorage.setItem('uniplanner_disciplinas', JSON.stringify(disciplinas));
+  saveDisciplinas(lista) {
+    localStorage.setItem('uniplanner_disciplinas', JSON.stringify(lista));
   },
 
   addDisciplina(disciplina) {
@@ -21,9 +21,7 @@ const Storage = {
   },
 
   updateDisciplina(id, dados) {
-    const lista = this.getDisciplinas().map(d =>
-      d.id === id ? { ...d, ...dados } : d
-    );
+    const lista = this.getDisciplinas().map(d => d.id === id ? { ...d, ...dados } : d);
     this.saveDisciplinas(lista);
   },
 
@@ -36,8 +34,8 @@ const Storage = {
     return dados ? JSON.parse(dados) : [];
   },
 
-  saveEventos(eventos) {
-    localStorage.setItem('uniplanner_eventos', JSON.stringify(eventos));
+  saveEventos(lista) {
+    localStorage.setItem('uniplanner_eventos', JSON.stringify(lista));
   },
 
   addEvento(evento) {
@@ -52,6 +50,7 @@ const Storage = {
   },
 
   gerarId() {
-    return `${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
+    return Date.now() + '_' + Math.random().toString(36).slice(2, 6);
   }
+
 };
