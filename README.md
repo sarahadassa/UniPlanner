@@ -4,6 +4,7 @@ Aplicação web para estudantes organizarem suas disciplinas, notas e compromiss
 
 
 📌 Sobre o projeto
+
 O UniPlanner nasceu de uma necessidade real: durante o semestre, é fácil perder o controle de quantas provas faltam, qual a sua média atual e quando é o próximo prazo de entrega.
 Com ele, você consegue:
 
@@ -14,6 +15,7 @@ Tudo salvo direto no navegador — sem precisar de conta ou internet
 
 
 🚀 Como usar
+
 Não precisa instalar nada. Basta:
 
 Clonar ou baixar o repositório
@@ -21,6 +23,7 @@ Abrir o arquivo index.html no navegador
 
 
 ✨ Funcionalidades
+
 Disciplinas
 
 Cadastrar matérias com nome, professor e cor de identificação
@@ -38,10 +41,12 @@ Vincular eventos a disciplinas cadastradas
 
 
 🛠️ Tecnologias
+
 Projeto desenvolvido com HTML, CSS e JavaScript puro — sem frameworks ou bibliotecas externas.
 TecnologiaUsoHTML5 semânticoEstrutura da aplicaçãoCSS3Estilização e layout responsivo (Flexbox + Grid)JavaScriptInteratividade e manipulação do DOMlocalStoragePersistência dos dados no navegador
 
 📁 Estrutura de arquivos
+
 uniplanner/
 ├── index.html          # Estrutura da aplicação
 ├── css/
