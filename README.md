@@ -45,17 +45,6 @@ Vincular eventos a disciplinas cadastradas
 Projeto desenvolvido com HTML, CSS e JavaScript puro — sem frameworks ou bibliotecas externas.
 TecnologiaUsoHTML5 semânticoEstrutura da aplicaçãoCSS3Estilização e layout responsivo (Flexbox + Grid)JavaScriptInteratividade e manipulação do DOMlocalStoragePersistência dos dados no navegador
 
-📁 Estrutura de arquivos
-
-uniplanner/
-├── index.html          # Estrutura da aplicação
-├── css/
-│   └── style.css       # Toda a estilização
-└── js/
-    ├── storage.js      # Funções de salvar/carregar do localStorage
-    ├── disciplinas.js  # Lógica de disciplinas e notas
-    ├── agenda.js       # Lógica da agenda de eventos
-    └── app.js          # Navegação, modais e inicialização
 
 
 📋 Requisitos atendidos
