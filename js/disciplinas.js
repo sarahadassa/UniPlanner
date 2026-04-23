@@ -27,7 +27,7 @@ const notaPesoInput     = document.getElementById('nota-peso');
 let disciplinaAtualId = null;
 let corSelecionada = '#E76F51';
 
-// Calcula a média ponderada das notas
+// Calcula a media ponderada das notas
 function calcularMedia(notas) {
   if (!notas || notas.length === 0) return null;
 
@@ -43,7 +43,7 @@ function calcularMedia(notas) {
   return somaPeso === 0 ? null : somaTotal / somaPeso;
 }
 
-// Retorna a situação do aluno com base na média
+// Retorna a situaçao do aluno com base na madia
 function calcularSituacao(media, minima) {
   if (media === null) return { label: 'Sem notas', classe: 'status--sem-nota' };
   if (media >= minima) return { label: 'Aprovado ✓', classe: 'status--aprovado' };
@@ -51,7 +51,7 @@ function calcularSituacao(media, minima) {
   return { label: 'Reprovado', classe: 'status--reprovado' };
 }
 
-// Mostra quanto falta para atingir a média mínima
+// Mostra quanto falta para atingir a média minima
 function mensagemFalta(notas, minima) {
   const media = calcularMedia(notas);
   if (media === null) return `Adicione notas. Média mínima: ${minima}`;
@@ -112,7 +112,7 @@ function abrirDetalhe(id) {
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
 }
 
-// Atualiza as informações de notas e média na tela de detalhe
+// Atualiza as informaçoes de notas e media na tela de detalhe
 function renderizarDetalhe(disciplina) {
   const notas = disciplina.notas || [];
   const minima = parseFloat(disciplina.mediaMinima) || 6;
@@ -205,7 +205,7 @@ function salvarNota() {
   mostrarToast('Nota adicionada!');
 }
 
-// Remove uma nota pelo índice
+// Remove uma nota pelo indice
 function excluirNota(index) {
   const disciplina = Storage.getDisciplinaById(disciplinaAtualId);
   const notas = disciplina.notas || [];

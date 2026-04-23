@@ -23,7 +23,7 @@ function fecharModal(id) {
   document.getElementById(id).style.display = 'none';
 }
 
-// Mostra uma mensagem rápida na tela (toast)
+// Mostra uma mensagem na tela 
 let toastTimeout;
 function mostrarToast(mensagem, tipo = 'ok') {
   const toast = document.getElementById('toast');
@@ -39,12 +39,12 @@ document.querySelectorAll('.nav-btn').forEach(btn => {
   btn.addEventListener('click', () => navegarPara(btn.dataset.page));
 });
 
-// Botões de fechar modal (atributo data-fecha)
+// Botões de fechar modal 
 document.querySelectorAll('[data-fecha]').forEach(btn => {
   btn.addEventListener('click', () => fecharModal(btn.dataset.fecha));
 });
 
-// Fecha modal ao clicar fora dele
+// Fecha modal qdo clicar fora dele
 document.querySelectorAll('.modal-overlay').forEach(overlay => {
   overlay.addEventListener('click', (e) => {
     if (e.target === overlay) fecharModal(overlay.id);
@@ -60,7 +60,7 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// Inicializa a aplicação
+// Inicializa 
 document.addEventListener('DOMContentLoaded', () => {
   renderizarDisciplinas();
   document.getElementById('evento-data').min = new Date().toISOString().split('T')[0];

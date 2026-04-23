@@ -14,7 +14,7 @@ let filtroAtivo = 'todos';
 const MESES = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
 const TIPOS  = { prova: 'Prova', trabalho: 'Trabalho', entrega: 'Entrega', outro: 'Outro' };
 
-// Calcula quantos dias faltam até uma data
+// Calcula quantos dias faltam ata uma data - na agenda quando colocamos uma data
 function diasRestantes(dataStr) {
   const hoje = new Date();
   hoje.setHours(0, 0, 0, 0);
