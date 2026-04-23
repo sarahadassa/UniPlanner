@@ -1,60 +1,134 @@
-◈ UniPlanner – Controle Acadêmico
+# 🎓 UniPlanner
 
-Aplicação web para estudantes organizarem suas disciplinas, notas e compromissos acadêmicos ao longo do semestre.
+O **UniPlanner** é uma aplicação web para organização acadêmica que permite gerenciar disciplinas, notas e eventos do semestre de forma simples, visual e interativa.
+
+---
+
+## 📌 Sobre o projeto
+
+O projeto foi desenvolvido com foco em facilitar o acompanhamento do desempenho acadêmico e organização de tarefas importantes, como provas e entregas.
+
+Todos os dados são armazenados localmente no navegador utilizando **LocalStorage**, sem necessidade de banco de dados externo.
+
+---
+
+## 🚀 Funcionalidades
+
+### 📚 Disciplinas
+
+* Cadastro de disciplinas com:
+
+  * Nome
+  * Professor
+  * Cor personalizada
+* Visualização em formato de cards
+* Exclusão de disciplinas
+
+---
+
+### 📝 Notas
+
+* Adição de notas com:
+
+  * Descrição
+  * Valor (0 a 10)
+  * Peso
+* Cálculo automático de média ponderada
+* Exibição de status:
+
+  * Aprovado
+  * Recuperação
+  * Reprovado
+* Definição de média mínima (editável)
+* Remoção de notas
+
+---
+
+### 📅 Agenda
+
+* Cadastro de eventos com:
+
+  * Título
+  * Tipo (prova, trabalho, entrega, outros)
+  * Data
+  * Disciplina vinculada (opcional)
+  * Observações
+* Filtro por tipo de evento
+* Cálculo de dias restantes
+* Destaque visual para eventos:
+
+  * Próximos
+  * Urgentes
+  * Já passados
+* Remoção de eventos
+
+---
+
+### 💾 Armazenamento
+
+* Utilização de **LocalStorage**
+* Dados persistem mesmo após recarregar a página
+
+---
+
+## 🛠️ Tecnologias utilizadas
+
+* HTML5
+* CSS3 (com variáveis e layout responsivo)
+* JavaScript (Vanilla JS)
+
+---
+
+## ⚙️ Como funciona
+
+* A aplicação é baseada em **manipulação de DOM**
+* Não utiliza frameworks ou bibliotecas externas
+* A navegação entre páginas é feita dinamicamente via JavaScript
+* Os dados são salvos e recuperados automaticamente do navegador
+
+---
+
+## ▶️ Como executar
+
+1. Clone o repositório:
+
+```id="y5gq9n"
+git clone https://github.com/sarahadassa/UniPlanner.git
+```
+
+2. Abra o arquivo `index.html` no navegador
+
+---
+
+## 🎯 Objetivo acadêmico
+
+Este projeto foi desenvolvido como atividade acadêmica com o objetivo de aplicar conceitos de:
+
+* Manipulação de DOM
+* Estruturação de código JavaScript
+* Persistência de dados no navegador
+* Interface e experiência do usuário
+
+---
+
+## ✨ Diferenciais do projeto
+
+* Interface moderna e organizada
+* Uso de cores para identificação de disciplinas
+* Feedback visual (status, badges e alertas)
+* Cálculo automático de desempenho acadêmico
+* Sistema completo sem uso de backend
+
+---
 
 
-📌 Sobre o projeto
+## 👩‍💻 Autores
 
-O UniPlanner nasceu de uma necessidade real: durante o semestre, é fácil perder o controle de quantas provas faltam, qual a sua média atual e quando é o próximo prazo de entrega.
-Com ele, você consegue:
-
-Cadastrar suas disciplinas e acompanhar as notas em um só lugar
-Ver automaticamente sua média e se está aprovado, em recuperação ou reprovado
-Adicionar eventos na agenda (provas, trabalhos, entregas) e saber quantos dias faltam
-Tudo salvo direto no navegador — sem precisar de conta ou internet
+Desenvolvido por **Maria Carolina Pereira** e **Sara Hadassa Carvalho** 
 
 
-🚀 Como usar
+## 📌 Observação
 
-Não precisa instalar nada. Basta:
+Os dados são armazenados apenas no navegador. Caso o cache seja limpo, as informações serão perdidas.
 
-Clonar ou baixar o repositório
-Abrir o arquivo index.html no navegador
-
-
-✨ Funcionalidades
-
-Disciplinas
-
-Cadastrar matérias com nome, professor e cor de identificação
-Adicionar notas com peso (para média ponderada)
-Cálculo automático da média e situação (✓ Aprovado / Recuperação / Reprovado)
-Indicativo de quantos pontos faltam para atingir a média mínima
-Média mínima configurável por disciplina
-
-Agenda
-
-Adicionar eventos acadêmicos: provas, trabalhos, entregas e outros
-Filtrar eventos por tipo
-Contador de dias restantes com alertas de urgência
-Vincular eventos a disciplinas cadastradas
-
-
-🛠️ Tecnologias
-
-Projeto desenvolvido com HTML, CSS e JavaScript puro — sem frameworks ou bibliotecas externas.
-TecnologiaUsoHTML5 semânticoEstrutura da aplicaçãoCSS3Estilização e layout responsivo (Flexbox + Grid)JavaScriptInteratividade e manipulação do DOMlocalStoragePersistência dos dados no navegador
-
-
-
-📋 Requisitos atendidos
-
-✅ Tags semânticas: header, main, section, article, nav, aside, footer
-✅ Formulários com label associados aos campos
-✅ Layout responsivo (funciona em celular e desktop)
-✅ Flexbox e Grid no layout
-✅ CSS em arquivo externo (sem Bootstrap ou Tailwind)
-✅ JavaScript em arquivos externos (sem frameworks)
-✅ Manipulação do DOM dinamicamente
-✅ Eventos de clique, digitação e mudança de valor
-✅ Dados salvos com localStorage
+---
